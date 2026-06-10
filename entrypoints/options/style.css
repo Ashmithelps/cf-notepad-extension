@@ -1,0 +1,253 @@
+:root {
+  color-scheme: light dark;
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+  --danger: #b91c1c;
+  --chip-bg: #eef2ff;
+  --chip-fg: #3730a3;
+  --chip-official-bg: #ecfdf5;
+  --chip-official-fg: #065f46;
+}
+
+html[data-theme="light"] {
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+  --danger: #b91c1c;
+  --chip-bg: #eef2ff;
+  --chip-fg: #3730a3;
+  --chip-official-bg: #ecfdf5;
+  --chip-official-fg: #065f46;
+}
+
+html[data-theme="dark"] {
+  --fg: #f1f5f9;
+  --fg-muted: #94a3b8;
+  --bg: #0b1220;
+  --card: #111827;
+  --border: #1f2937;
+  --accent: #60a5fa;
+  --danger: #f87171;
+  --chip-bg: #1e1b4b;
+  --chip-fg: #c7d2fe;
+  --chip-official-bg: #064e3b;
+  --chip-official-fg: #a7f3d0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #f1f5f9;
+    --fg-muted: #94a3b8;
+    --bg: #0b1220;
+    --card: #111827;
+    --border: #1f2937;
+    --accent: #60a5fa;
+    --danger: #f87171;
+    --chip-bg: #1e1b4b;
+    --chip-fg: #c7d2fe;
+    --chip-official-bg: #064e3b;
+    --chip-official-fg: #a7f3d0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.muted { color: var(--fg-muted); font-size: 13px; }
+
+.controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 18px 0 12px;
+}
+
+@media (max-width: 800px) {
+  .controls { grid-template-columns: 1fr 1fr; }
+}
+
+.input, .select {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--fg);
+  font-size: 13px;
+}
+
+.activeFilter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-size: 12px;
+  margin-right: 8px;
+}
+.activeFilter button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+}
+
+.row {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.row .left { min-width: 0; }
+
+.row .titleLine {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.row .titleLine a {
+  color: inherit;
+  text-decoration: none;
+}
+.row .titleLine a:hover { text-decoration: underline; }
+
+.row .meta {
+  font-size: 12px;
+  color: var(--fg-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  align-items: center;
+}
+
+.tagChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-size: 11px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.tagChip:hover { filter: brightness(1.1); }
+
+.officialChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--chip-official-bg);
+  color: var(--chip-official-fg);
+  font-size: 11px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--fg-muted);
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+.tagRow { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.tab {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tab-active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.settings {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.settings h2 { margin: 0 0 12px; font-size: 16px; }
+.settings h3 { margin: 0 0 8px; font-size: 14px; }
+.settingRow { margin-bottom: 10px; }
+.settingRow label {
+  display: block;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+.settingRow label > select { margin-top: 4px; }
+.checkLabel {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg) !important;
+}
+.primaryBtn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.primaryBtn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.statusOk, .statusErr {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.statusOk { background: var(--chip-official-bg); color: var(--chip-official-fg); }
+.statusErr { background: #fee2e2; color: #991b1b; }
+@media (prefers-color-scheme: dark) {
+  .statusErr { background: #450a0a; color: #fecaca; }
+}
