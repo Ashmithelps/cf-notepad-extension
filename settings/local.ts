@@ -3,13 +3,11 @@ export type Theme = "auto" | "light" | "dark";
 export interface AppSettings {
   theme: Theme;
   bannerEnabled: boolean;
-  reviewRemindersEnabled: boolean;
 }
 
 export const DEFAULT_APP_SETTINGS: AppSettings = {
   theme: "auto",
   bannerEnabled: true,
-  reviewRemindersEnabled: true,
 };
 
 const KEY = "settings";

@@ -45,19 +45,6 @@ describe("NotesRepo", () => {
     expect(fetched?.updatedAt).toBe(1_000);
   });
 
-  it("create initializes an FSRS card without scheduling logic", async () => {
-    const k = pkey();
-    const note = await repo.create(k, {
-      url: "u",
-      body: "",
-    });
-    expect(note.srs).toBeDefined();
-    expect(note.srs).toMatchObject({
-      reps: 0,
-      lapses: 0,
-    });
-  });
-
   it("update changes body + updatedAt but not createdAt", async () => {
     const k = pkey();
     await repo.create(k, { url: "u", body: "v1" });

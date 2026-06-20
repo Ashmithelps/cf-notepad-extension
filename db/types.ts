@@ -1,5 +1,3 @@
-import type { StoredCard } from "../srs/schedule";
-
 export type Platform = "cf" | "atcoder" | "codechef" | "leetcode";
 
 export interface ProblemKey {
@@ -8,8 +6,6 @@ export interface ProblemKey {
   index: string;
   key: string;
 }
-
-export type FsrsCardState = StoredCard;
 
 export interface Note {
   key: string;
@@ -26,19 +22,16 @@ export interface Note {
   difficultyFelt?: 1 | 2 | 3 | 4 | 5;
   createdAt: number;
   updatedAt: number;
-  srs?: FsrsCardState;
 }
 
 export interface Settings {
   id: "singleton";
   theme: "auto" | "light" | "dark";
   bannerEnabled: boolean;
-  reviewRemindersEnabled: boolean;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
   id: "singleton",
   theme: "auto",
   bannerEnabled: true,
-  reviewRemindersEnabled: true,
 };

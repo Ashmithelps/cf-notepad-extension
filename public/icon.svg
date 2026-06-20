@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Navy rounded tile — renders consistently on light, dark, and white store backgrounds -->
+  <rect width="128" height="128" rx="22" fill="#1B3A6B"/>
+
+  <!-- Left page of open book -->
+  <rect x="12" y="46" width="46" height="56" rx="6" fill="#EDE9E1"/>
+  <!-- Inner highlight strip — thin near-white edge at top of left page -->
+  <rect x="13" y="47" width="44" height="4" rx="2" fill="#FEFEFB" opacity="0.85"/>
+  <!-- Text lines on left page -->
+  <rect x="18" y="57" width="34" height="5" rx="2.5" fill="#BDB6A8"/>
+  <rect x="18" y="68" width="28" height="5" rx="2.5" fill="#BDB6A8"/>
+  <rect x="18" y="79" width="32" height="5" rx="2.5" fill="#BDB6A8"/>
+  <rect x="18" y="90" width="22" height="5" rx="2.5" fill="#BDB6A8"/>
+
+  <!-- Right page of open book (slightly brighter — top-lit) -->
+  <rect x="70" y="46" width="46" height="56" rx="6" fill="#F4F1EB"/>
+  <!-- Inner highlight strip on right page -->
+  <rect x="71" y="47" width="44" height="4" rx="2" fill="#FEFEFD" opacity="0.85"/>
+  <!-- Text lines on right page -->
+  <rect x="76" y="57" width="34" height="5" rx="2.5" fill="#C9C2B6"/>
+  <rect x="76" y="68" width="26" height="5" rx="2.5" fill="#C9C2B6"/>
+  <rect x="76" y="79" width="30" height="5" rx="2.5" fill="#C9C2B6"/>
+
+  <!-- Spine: navy strip (background showing through the gap) -->
+  <rect x="58" y="46" width="12" height="56" fill="#1B3A6B"/>
+  <!-- Spine crease highlight -->
+  <rect x="61" y="50" width="4" height="48" rx="2" fill="#2A5298" opacity="0.65"/>
+
+  <!--
+    Orange recall arc
+    Center: (88, 34), radius: 22
+    From (110, 34) [3 o'clock] sweeping 270° clockwise to (88, 12) [12 o'clock]
+    large-arc=1 (>180°), sweep=1 (clockwise in SVG screen coords)
+  -->
+  <path d="M 110 34 A 22 22 0 1 1 88 12"
+        fill="none" stroke="#F45328" stroke-width="11" stroke-linecap="round"/>
+
+  <!--
+    Arrowhead at arc endpoint (88, 12), pointing right (clockwise tangent at 12 o'clock)
+    Tip: (101, 12)  Wings: (88, 5) and (88, 19)  — width matches stroke-width
+  -->
+  <polygon points="101,12 88,5 88,19" fill="#F45328"/>
+</svg>

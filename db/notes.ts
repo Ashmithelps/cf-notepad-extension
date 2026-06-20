@@ -1,4 +1,3 @@
-import { createInitialCard, normalizeStored, schedule, type Grade } from "../srs/schedule";
 import { normalizeTagList } from "../ui/tags";
 import type { Note, ProblemKey } from "./types";
 
@@ -75,7 +74,6 @@ export class NotesRepo {
       solved: false,
       createdAt: ts,
       updatedAt: ts,
-      srs: createInitialCard(ts),
     };
     await this.store.put(note);
     return note;
@@ -134,22 +132,6 @@ export class NotesRepo {
     next.updatedAt = this.clock.now();
     await this.store.put(next);
     return next;
-  }
-
-  async rate(key: string, grade: Grade): Promise<Note | null> {
-    const existing = await this.store.get(key);
-    if (!existing) return null;
-    const ts = this.clock.now();
-    const current = normalizeStored(existing.srs);
-    const nextCard = schedule(current, grade, ts);
-    const updated: Note = {
-      ...existing,
-      srs: nextCard,
-      solved: true,
-      updatedAt: ts,
-    };
-    await this.store.put(updated);
-    return updated;
   }
 
   async delete(key: string): Promise<void> {

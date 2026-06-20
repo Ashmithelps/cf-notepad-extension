@@ -99,12 +99,6 @@ export function Dashboard() {
     <main className="app">
       <div style={{ display: "flex", alignItems: "baseline", gap: "16px", flexWrap: "wrap" }}>
         <h1>CF Recall</h1>
-        <a
-          href={chrome.runtime.getURL("review.html")}
-          style={{ color: "var(--accent)" }}
-        >
-          → Review queue
-        </a>
         <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
           <button
             className={tab === "notes" ? "tab tab-active" : "tab"}

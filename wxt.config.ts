@@ -7,10 +7,22 @@ export default defineConfig({
     name: "CF Recall",
     description:
       "Codeforces smart notes + spaced repetition. Privacy-first, local-only.",
-    permissions: ["storage", "tabs", "alarms"],
+    permissions: ["storage", "tabs"],
     host_permissions: ["https://codeforces.com/*"],
+    icons: {
+      16: "icon-16.png",
+      32: "icon-32.png",
+      48: "icon-48.png",
+      128: "icon-128.png",
+    },
     action: {
       default_title: "CF Recall",
+      default_icon: {
+        16: "icon-16.png",
+        32: "icon-32.png",
+        48: "icon-48.png",
+        128: "icon-128.png",
+      },
     },
     commands: {
       "toggle-panel": {

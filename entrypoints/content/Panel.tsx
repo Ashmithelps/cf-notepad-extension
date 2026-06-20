@@ -4,13 +4,6 @@ import { scrapeProblemMetadata } from "../../parser/cf-dom";
 import { MarkdownView } from "../../ui/MarkdownView";
 import { normalizeTag, normalizeTagList } from "../../ui/tags";
 import type { Palette } from "../../ui/theme";
-import {
-  formatInterval,
-  GRADES,
-  inRotation,
-  normalizeStored,
-  type Grade,
-} from "../../srs/schedule";
 import type { Note, ProblemKey } from "../../db/types";
 
 type Mode =
@@ -330,11 +323,6 @@ function PanelBody({
             <em style={{ opacity: 0.6 }}>(empty)</em>
           )}
 
-          <ReviewSection
-            note={note}
-            styles={styles}
-            onUpdate={(n) => setMode({ kind: "view", note: n })}
-          />
           <TechniqueTagsSection
             note={note}
             suggestions={suggestions}
@@ -469,66 +457,6 @@ function PanelBody({
         </button>
       </div>
     </>
-  );
-}
-
-function ReviewSection({
-  note,
-  styles,
-  onUpdate,
-}: {
-  note: Note;
-  styles: Styles;
-  onUpdate: (n: Note) => void;
-}) {
-  const card = normalizeStored(note.srs);
-  const rotating = inRotation(card);
-
-  const rate = async (grade: Grade) => {
-    const updated = await notesRepo.rate(note.key, grade);
-    if (updated) {
-      onUpdate(updated);
-      try {
-        chrome.runtime.sendMessage({ type: "review-changed" });
-      } catch {
-        // background may be napping; not critical
-      }
-    }
-  };
-
-  return (
-    <div style={styles.section}>
-      <div style={styles.sectionLabel}>Review</div>
-      <div style={{ display: "flex", gap: "6px", marginBottom: "6px" }}>
-        {GRADES.map((g) => (
-          <button
-            key={g}
-            style={{
-              ...styles.iconBtn,
-              flex: 1,
-              padding: "6px 0",
-              ...(g === "Good" || g === "Easy"
-                ? { borderColor: "#2563eb" }
-                : {}),
-            }}
-            onClick={() => void rate(g)}
-            title={`Rate ${g}`}
-          >
-            {g}
-          </button>
-        ))}
-      </div>
-      {rotating && card ? (
-        <div style={{ fontSize: "11px", opacity: 0.8 }}>
-          Next review in {formatInterval(Date.now(), card.due)} ·{" "}
-          {new Date(card.due).toLocaleDateString()}
-        </div>
-      ) : (
-        <div style={{ fontSize: "11px", opacity: 0.6 }}>
-          Not yet in review rotation — rate to start.
-        </div>
-      )}
-    </div>
   );
 }
 

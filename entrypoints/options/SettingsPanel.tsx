@@ -75,11 +75,6 @@ export function SettingsPanel() {
         kind: "ok",
         msg: `Imported: ${report.added} added, ${report.updated} updated, ${report.skipped} skipped.`,
       });
-      try {
-        chrome.runtime.sendMessage({ type: "review-changed" });
-      } catch {
-        /* noop */
-      }
     } catch (err) {
       setStatus({
         kind: "err",
@@ -115,19 +110,6 @@ export function SettingsPanel() {
             onChange={(e) => void patch({ bannerEnabled: e.target.checked })}
           />
           <span>Show the revisit banner on problems with notes</span>
-        </label>
-      </div>
-
-      <div className="settingRow">
-        <label className="checkLabel">
-          <input
-            type="checkbox"
-            checked={settings.reviewRemindersEnabled}
-            onChange={(e) =>
-              void patch({ reviewRemindersEnabled: e.target.checked })
-            }
-          />
-          <span>Show the review-due count on the toolbar badge</span>
         </label>
       </div>
 
